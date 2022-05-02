@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="cat.udl.tidic.amd.trivial.models.GameStatus"/>
+        <import type="cat.udl.tidic.amd.trivial.models.PlayerStatus"/>
+        <variable
+            name="player"
+            type="cat.udl.tidic.amd.trivial.models.Player" />
+        <variable
+            name="game"
+            type="cat.udl.tidic.amd.trivial.models.Game" />
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/gameItemLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:onClickListener="@{clicklistener}">
+
+    <TextView
+        android:id="@+id/gameStatusColor"
+        android:layout_width="14dp"
+        android:layout_height="67dp"
+        android:background="@{game.status == GameStatus.O ? @android:color/holo_green_light : game.status == GameStatus.F ? @color/red : @color/blue}"
+        android:gravity="center"
+        android:text='@{game.status.toString().substring(0,1)}'
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/gameItemScore"
+        android:layout_width="86dp"
+        android:layout_height="23dp"
+        android:text='@{player != null &amp;&amp; game != null ? String.valueOf(game.getCurrentState(player).score) : "-"}'
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/gameItemStatus"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gameItemStatus"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/gameItemStatus"
+        android:layout_width="86dp"
+        android:layout_height="23dp"
+        android:text='@{player != null &amp;&amp; game != null ? game.getCurrentState(player).status.toString() : "-"}'
+        android:textColor="@{player != null &amp;&amp; game != null ? game.getCurrentState(player).status == PlayerStatus.W ? @color/blue : @color/red : @color/black}"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/gameItemRound"
+        app:layout_constraintStart_toStartOf="@+id/gameItemRound"
+        app:layout_constraintTop_toBottomOf="@+id/gameItemScore" />
+
+    <TextView
+        android:id="@+id/gameItemRound"
+        android:layout_width="86dp"
+        android:layout_height="23dp"
+        android:text='@{player != null &amp;&amp; game != null ? String.valueOf(game.getCurrentState(player).round) +"/"+ String.valueOf(game.max_rounds) : "-/-"}'
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/gameStatusColor"
+        app:layout_constraintTop_toBottomOf="@+id/gameItemStatus"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/gameItemCode"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        android:text="@{game.code}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gameItemStatus"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toEndOf="@+id/gameStatusColor"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.184" />
+
+    <TextView
+        android:id="@+id/gameItemPlayers"
+        android:layout_width="0dp"
+        android:layout_height="18dp"
+        android:text="@{game.players.toString()}"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gameItemStatus"
+        app:layout_constraintStart_toEndOf="@+id/gameStatusColor"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.901" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_games">
+
+    <fragment
+        android:id="@+id/navigation_games"
+        android:name="cat.udl.tidic.amd.trivial.usecases.games.GamesFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_games" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_question"
+            app:destination="@id/navigation_question" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_join" />
+        <action
+            android:id="@+id/action_navigation_games_to_matchFragment"
+            app:destination="@id/matchFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_join"
+        android:name="cat.udl.tidic.amd.trivial.views.ui.join.JoinFragment"
+        android:label="@string/title_join"
+        tools:layout="@layout/fragment_join" >
+        <action
+            android:id="@+id/action_navigation_join_to_navigation_games"
+            app:destination="@id/navigation_games" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_ranking"
+        android:name="cat.udl.tidic.amd.trivial.usecases.ranking.RankingFragment"
+        android:label="@string/title_ranking"
+        tools:layout="@layout/fragment_ranking" />
+
+    <fragment
+        android:id="@+id/navigation_question"
+        android:name="cat.udl.tidic.amd.trivial.usecases.question.QuestionFragment"
+        android:label="@string/title_question"
+        tools:layout="@layout/fragment_question" >
+        <action
+            android:id="@+id/action_navigation_question_to_navigation_home"
+            app:destination="@id/navigation_games"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="questionId"
+            app:argType="integer" />
+        <argument
+            android:name="playerStatus"
+            app:argType="cat.udl.tidic.amd.trivial.models.PlayerStatus" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchFragment"
+        android:name="cat.udl.tidic.amd.trivial.views.ui.match.MatchFragment"
+        android:label="MatchFragment"
+        tools:layout="@layout/fragment_match">
+        <argument
+            android:name="gameCode"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_matchFragment_to_navigation_games"
+            app:destination="@id/navigation_games"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+
+</navigation>

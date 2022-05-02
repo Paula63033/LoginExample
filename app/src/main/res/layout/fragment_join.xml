@@ -1,0 +1,114 @@
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+        <variable
+            name="joinViewModel"
+            type="cat.udl.tidic.amd.trivial.views.ui.join.JoinViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="center_vertical|center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.174"
+        tools:context=".views.ui.join.JoinFragment">
+
+        <TextView
+            android:id="@+id/joinTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Join a Game"
+            android:textAlignment="center"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="354dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="12dp"
+            android:text="Enter an Instant Invitation code for a friend game."
+            android:textAlignment="center"
+            android:textColor="@color/purple_500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/joinTV" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="352dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="24dp"
+            android:text="Search for a  random game"
+            android:textAlignment="center"
+            android:textColor="@color/purple_500"
+            app:layout_constraintEnd_toEndOf="@+id/joinBt"
+            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintStart_toStartOf="@+id/joinBt"
+            app:layout_constraintTop_toBottomOf="@+id/joinBt" />
+
+        <Button
+            android:id="@+id/joinBt"
+            android:layout_width="355dp"
+            android:layout_height="48dp"
+            android:onClick="@{() -> joinViewModel.joinToInvitedGame()}"
+            android:enabled="@{!TextUtils.isEmpty(joinViewModel.gameCode)}"
+            android:text="@string/join_to_an_invited_game"
+            app:layout_constraintEnd_toEndOf="@+id/gameCodeET"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/gameCodeET"
+            app:layout_constraintTop_toBottomOf="@+id/gameCodeET" />
+
+        <Button
+            android:id="@+id/randombT"
+            android:layout_width="357dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:onClick="@{() -> joinViewModel.joinToRandomGame()}"
+            android:text="@string/join_to_a_random_game"
+            app:layout_constraintEnd_toEndOf="@+id/textView2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <EditText
+            android:id="@+id/gameCodeET"
+            android:layout_width="354dp"
+            android:layout_height="53dp"
+            android:ems="10"
+            android:hint="x6cv89"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:text="@={joinViewModel.gameCode}"
+            android:textAlignment="gravity"
+            android:textColorHint="#757575"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <include
+            android:id="@+id/linearLayoutProgressBar"
+            layout="@layout/loading"
+            android:visibility="@{joinViewModel.isJoined ? View.VISIBLE : View.GONE}"
+
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="190dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

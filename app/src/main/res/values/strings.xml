@@ -1,0 +1,49 @@
+<resources>
+
+    <!-- General -->
+
+    <string name="app_name">GTIDIC - Trivial</string>
+
+
+    <!-- Bottom Navigation -->
+    <string name="title_home">Games</string>
+    <string name="title_join">Join</string>
+    <string name="title_ranking">Ranking</string>
+
+    <string name="title_activity_game_versus">GameVersusActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+
+
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="join_to_an_invited_game">Join to an Invited Game</string>
+    <string name="join_to_a_random_game">Join to a random game</string>
+    <string name="title_question">Question</string>
+
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="repeat">Repeat password</string>
+    <string name="login">Login</string>
+    <string name="no_account_yet_create_one">No account yet? Create one</string>
+    <string name="please_wait">Please wait …</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_login">Already a member? Login</string>
+    <string name="logo_description">This is the logo for DAM Quizz</string>
+</resources>
